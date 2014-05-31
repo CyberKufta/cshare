@@ -1,7 +1,12 @@
 Cshare::Application.routes.draw do
+  devise_for :users
   match '/home', to: 'static_pages#home', via: 'get'
 
   root "static_pages#home"
+
+  devise_scope :user do
+    get "sign_in", to: "devise/sessions#new"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
