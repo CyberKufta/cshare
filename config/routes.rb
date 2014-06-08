@@ -1,5 +1,8 @@
 Cshare::Application.routes.draw do
+  get "users_controller/show"
   devise_for :users
+  match 'users/:id', to: 'users#show', via: 'get', as: :profile
+
   match '/home', to: 'static_pages#home', via: 'get'
 
   root "static_pages#home"
