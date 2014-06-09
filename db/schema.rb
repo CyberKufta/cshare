@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608104435) do
+ActiveRecord::Schema.define(version: 20140608135234) do
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "location_name"
+    t.integer  "created_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["created_by_id"], name: "index_events_on_created_by_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

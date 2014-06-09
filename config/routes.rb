@@ -1,4 +1,6 @@
 Cshare::Application.routes.draw do
+  resources :events
+
   get "users_controller/show"
   devise_for :users
   match 'users/:id', to: 'users#show', via: 'get', as: :profile
