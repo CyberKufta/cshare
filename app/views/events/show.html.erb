@@ -29,6 +29,13 @@
   <strong>Created by:</strong>
   <%= @event.user.nickname %>
 </p>
+<section>
+  <%= render 'shared/event_stats' %>
+</section>
+<div class="span8">
+  <%= render 'attend_form' if user_signed_in? %>
+</div>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
 
