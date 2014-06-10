@@ -1,5 +1,7 @@
 Cshare::Application.routes.draw do
-  resources :events
+  resources :events do
+    resources :schedules , only: [:create, :new, :destroy]
+  end
 
   get "users_controller/show"
   devise_for :users

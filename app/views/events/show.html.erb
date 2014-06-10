@@ -29,6 +29,12 @@
   <strong>Created by:</strong>
   <%= @event.user.nickname %>
 </p>
-
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+<br />
+<h3>Schedule</h3>
+
+<%= render 'shared/schedule' %>
+<%= link_to 'Add a new schedule item', new_event_schedule_path(@event), class: "btn" %>
+

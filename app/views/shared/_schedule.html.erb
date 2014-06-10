@@ -1,0 +1,6 @@
+<% if @schedule_items.any? %>
+
+<ol class="schedule">
+	<%= render partial: 'shared/schedule_item', collection: @schedule_items %>
+</ol>
+<% end %>
