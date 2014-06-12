@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610103400) do
+ActiveRecord::Schema.define(version: 20140612083751) do
 
   create_table "attendances", force: true do |t|
     t.integer  "user_id"
@@ -36,6 +36,30 @@ ActiveRecord::Schema.define(version: 20140610103400) do
   end
 
   add_index "events", ["created_by_id"], name: "index_events_on_created_by_id"
+
+  create_table "file_uploads", force: true do |t|
+    t.string   "image_uid"
+    t.string   "image_name"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "file_uploads", ["event_id"], name: "index_file_uploads_on_event_id"
+  add_index "file_uploads", ["user_id"], name: "index_file_uploads_on_user_id"
+
+  create_table "images", force: true do |t|
+    t.string   "image_uid"
+    t.string   "image_name"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["event_id"], name: "index_images_on_event_id"
+  add_index "images", ["user_id"], name: "index_images_on_user_id"
 
   create_table "schedules", force: true do |t|
     t.integer  "event_id"

@@ -1,1 +1,11 @@
 <%= @user.nickname %>
+
+<div>
+<% if @user.images.any? %>
+	<h3>Uploaded images (<%= @user.images.count %>) </h3>
+	<ol>
+		<%= render @images %>
+	</ol>
+<% end %>
+
+</div>

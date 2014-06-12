@@ -3,5 +3,5 @@ class Event < ActiveRecord::Base
   has_many :schedules
   has_many :attendances, foreign_key: "event_id", dependent: :destroy
   has_many :attenders, through: :attendances, source: :user
-
+  has_many :images
 end

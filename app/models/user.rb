@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :events, foreign_key: "created_by_id"
   has_many :attendances, foreign_key: "user_id", dependent: :destroy
   has_many :attending, through: :attendances, source: :event
+  has_many :images
 
 
 

@@ -4,7 +4,7 @@ Cshare::Application.routes.draw do
   end
 
   resources :attendances, only: [:create, :destroy]
-
+  resources :images, only: [:create, :destroy]
   get "users_controller/show"
   devise_for :users
   match 'users/:id', to: 'users#show', via: 'get', as: :profile
