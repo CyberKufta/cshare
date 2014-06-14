@@ -16,19 +16,26 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    location = @event.build_location
+
   end
 
   # GET /events/1/edit
   def edit
+    location = @event.build_location if @event.location.nil?
+      
+
+
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-
+  
     respond_to do |format|
-      if @event.save
+      if @event.save  
+        
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
@@ -70,6 +77,9 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date, :location_name)
+      params.require(:event).permit(:title, :description, :start_date, :end_date, :location_name, location_attributes: [:latitude, :longitude, :address])
     end
+
+  
+
 end

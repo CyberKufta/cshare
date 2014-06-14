@@ -6,6 +6,8 @@ gem 'rails', '4.0.5'
 
 gem 'devise'
 
+gem 'geocoder'
+
 gem 'dragonfly', "~>1.0.5"
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'

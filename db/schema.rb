@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612083751) do
+ActiveRecord::Schema.define(version: 20140613155404) do
 
   create_table "attendances", force: true do |t|
     t.integer  "user_id"
@@ -60,6 +60,19 @@ ActiveRecord::Schema.define(version: 20140612083751) do
 
   add_index "images", ["event_id"], name: "index_images_on_event_id"
   add_index "images", ["user_id"], name: "index_images_on_user_id"
+
+  create_table "locations", force: true do |t|
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "address"
+    t.integer  "event_id"
+    t.float    "radius"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["event_id"], name: "index_locations_on_event_id"
+  add_index "locations", ["latitude", "longitude"], name: "index_locations_on_latitude_and_longitude"
 
   create_table "schedules", force: true do |t|
     t.integer  "event_id"

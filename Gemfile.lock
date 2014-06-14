@@ -48,6 +48,7 @@ GEM
       rack
     erubis (2.7.0)
     execjs (2.2.0)
+    geocoder (1.2.2)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -132,6 +133,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   dragonfly (~> 1.0.5)
+  geocoder
   jbuilder (~> 1.2)
   jquery-rails (= 3.0.4)
   pg (= 0.15.1)

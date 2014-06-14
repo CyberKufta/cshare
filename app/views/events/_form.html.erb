@@ -32,6 +32,12 @@
     <%= f.text_field :location_name %>
   </div>
 
+  <%= f.fields_for :location do |location_field| %>
+    Address: <%= location_field.text_field :address %>
+    Latitude: <%= location_field.text_field :latitude %>
+    Longitude: <%= location_field.text_field :longitude %>
+   <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
