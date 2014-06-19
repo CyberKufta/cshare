@@ -29,10 +29,15 @@
   <strong>Created by:</strong>
   <%= @event.user.nickname %>
 </p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @event.location.address if !@event.location.nil? %>
+</p>
 <section>
   <%= render 'shared/event_stats' %>
 </section>
-<div class="span8">
+<div>
   <%= render 'attend_form' if user_signed_in? %>
 </div>
 

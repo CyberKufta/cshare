@@ -1,10 +1,14 @@
 <% provide(:title, 'Home') %>
+
+
 <div class="center hero-unit">
 <% if user_signed_in? %>
 <h1>Welcome <%= current_user.nickname %></h1>
 	<% if current_user.admin? %>
 	<h2> With great power comes great responsibility</h2>
+
 	<% end %>
+
 <% else %>
 <h1>Welcome to C Share</h1>
 <h2>
@@ -14,6 +18,7 @@
 <%= link_to "Sign up now!", new_user_registration_path , class: "btn btn-large btn-primary" %>
 <% end %>
 </div>
-<%= render 'shared/upload_form' %>
+
+<%= render 'shared/upload_form' if user_signed_in? %>
 
 

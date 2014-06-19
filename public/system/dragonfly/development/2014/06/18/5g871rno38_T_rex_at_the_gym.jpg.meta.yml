@@ -1,0 +1,10 @@
+---
+name: T rex at the gym.jpg
+model_class: Image
+model_attachment: image
+analyser_cache:
+  image_properties:
+    format: jpeg
+    width: 500
+    height: 365
+  format: jpeg

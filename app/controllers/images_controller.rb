@@ -5,7 +5,7 @@ before_action :correct_user, only: :destroy
 	def create
 		@photo = current_user.images.build(image_params)
 		if @photo.save
-			flash[:success] = "Photo has been uploaded"
+			flash[:notice] = "Photo has been uploaded at" + @photo.lat.to_s + ','  + @photo.lon.to_s
 			redirect_to root_url
 		else
 			render 'static_pages/home'
@@ -23,7 +23,7 @@ before_action :correct_user, only: :destroy
 private
 
 	def image_params
-		params.require(:image).permit(:image)
+		params.require(:image).permit(:image, :lat, :lon)
 	end
 
 	def correct_user
