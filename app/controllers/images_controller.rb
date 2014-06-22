@@ -4,6 +4,7 @@ before_action :correct_user, only: :destroy
 
 	def create
 		@photo = current_user.images.build(image_params)
+		@photo.event_id = current_user.nearby_happening(@photo.lat, @photo.lon).first.event_id
 		if @photo.save
 			flash[:notice] = "Photo has been uploaded at" + @photo.lat.to_s + ','  + @photo.lon.to_s
 			redirect_to root_url

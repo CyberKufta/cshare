@@ -11,6 +11,15 @@ class User < ActiveRecord::Base
 
 
 
+  def ongoing(s_date, e_date)
+    attending.where('events.start_date <= ? AND events.end_date >= ?', s_date, e_date )
+  end
+
+  def nearby_happening(lon,lat)
+
+   Location.near([lon,lat]).where(event_id: self.ongoing(Time.now, Time.now)).all
+
+  end
 
 
   def attending?(event)

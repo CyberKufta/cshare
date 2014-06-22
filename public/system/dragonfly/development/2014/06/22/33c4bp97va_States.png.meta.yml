@@ -1,0 +1,10 @@
+---
+name: States.png
+model_class: Image
+model_attachment: image
+analyser_cache:
+  image_properties:
+    format: png
+    width: 1920
+    height: 1080
+  format: png

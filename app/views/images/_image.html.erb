@@ -1,10 +1,13 @@
 <li>
 	<span class="image"><%= image_tag image.image.thumb('200x200#').url if image.image_stored? %> </span>
 	<span class="timestamp">Uploaded <%= time_ago_in_words(image.created_at) %> ago. </span>
+	<span class="google-location"> <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{image.lat},#{image.lon}&zoom=15&size=300x300&maptype=roadmap&markers=color:red%7Clabel:L%7C#{image.lat},#{image.lon}" if image.lon != 0 %> </span>
 	<% if current_user.id == image.user_id %>
 	<%= link_to "delete", image, method: :delete,
 								 data: { confirm: "are you sure?"},
 								 title: "Bleh" %>
 	<% end %>
 	<span class="location"><%= image.lon.to_s + ',' + image.lat.to_s %></span>
+
 </li>
+<br/>

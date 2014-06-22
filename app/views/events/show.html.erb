@@ -32,9 +32,10 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @event.location.address if !@event.location.nil? %>
+  <%= "#{@event.location.address} at [#{@event.location.latitude} ,#{@event.location.longitude}]" if !@event.location.nil? %>
+
 </p>
-<section>
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.location.latitude},#{@event.location.longitude}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:L%7C#{@event.location.latitude},#{@event.location.longitude}" %>
   <%= render 'shared/event_stats' %>
 </section>
 <div>
@@ -49,4 +50,6 @@
 
 <%= render 'shared/schedule' %>
 <%= link_to 'Add a new schedule item', new_event_schedule_path(@event), class: "btn" %>
+<h4>Events Images</h4>
+<%= render @images %>
 

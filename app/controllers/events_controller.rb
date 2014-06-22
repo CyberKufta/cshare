@@ -11,12 +11,15 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @schedule_items = @event.schedules
+    @images = @event.images.all
   end
 
   # GET /events/new
   def new
     @event = Event.new
     location = @event.build_location
+    @latitude = cookies[:latitudine].nil? ? '0.00' : cookies[:latitudine]
+    @longitude = cookies[:longitudine].nil? ? '0.00' : cookies[:longitudine]
 
   end
 
