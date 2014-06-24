@@ -1,34 +1,43 @@
-<%= form_for(@schedule, url: event_schedules_path) do |f| %>
-  <% if @schedule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @schedule.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="row">
+  <div class="col-xs-4">
+  </div>
+  <div class="col-xs-3">
+    <%= form_for(@schedule, url: event_schedules_path) do |f| %>
+    <div class="form-group">
+      <% if @schedule.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+            <ul>
+            <% @schedule.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :start_date %><br>
+          <%= f.datetime_select :start_date, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :end_date %><br>
+          <%= f.datetime_select :end_date, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :location_name %><br>
+          <%= f.text_field :location_name, class: "form-control" %>
+        </div>
+
+      
+          <%= f.submit "Add to schedule", class: "btn btn-primary btn-lg btn-block"%>
+ 
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :location_name %><br>
-    <%= f.text_field :location_name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

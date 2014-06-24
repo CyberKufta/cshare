@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @schedule_items = @event.schedules
+    @schedule_items = @event.schedules.order("start_date ASC").all
     @images = @event.images.all
 
 
