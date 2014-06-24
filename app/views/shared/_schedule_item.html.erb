@@ -1,13 +1,12 @@
-<li id="<%= schedule_item.id %>">
-	<span class="title"> <%= schedule_item.title %></span>
-	<span class="time"> <%= schedule_item.start_date %> - <%= schedule_item.end_date %></span>
-	<span class="location"><%= schedule_item.location_name %></span>
-	<span class="delete">
-		<% if current_user.admin? %>
-		<%= link_to "delete", event_schedule_path(id: schedule_item.id, event_id: schedule_item.event_id), method: :delete, 
+<tr class= <%= cycle('active','success')%> >
+	<td> <%= schedule_item.title %></td>
+	<td> <%= schedule_item.start_date.strftime("%B %d %I:%M %p") %> - <%= schedule_item.end_date.strftime("%B %d %I:%M %p") %></td>
+	<td><%= schedule_item.location_name %></td>
+	<% if current_user.admin? %>
+	<td><%= link_to "delete", event_schedule_path(id: schedule_item.id, event_id: schedule_item.event_id), method: :delete, 
 											 data: { confirm: "are you sure?"}, 
-											 title: schedule_item.title, class: 'btn btn-small' %>
-		<% end %>
-	</span>
+											 title: schedule_item.title, class: 'btn btn-default btn-xs' %></td>
+	<% end %>
+	
 
-</li>
+</tr>

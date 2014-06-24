@@ -8,16 +8,15 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<div class="container">
+	<p class="alert <%= "alert" if alert || notice %>-warning center"><%= notice || alert %></p>
+	</div>
 	
 	<%= render 'layouts/header' %>
-    <div class="container">
-
+   
 		<%= yield %>
 		<%= render 'layouts/footer' %>
 		<%= debug(params) if Rails.env.development? %>
-	</div>
 
 </body>
 </html>

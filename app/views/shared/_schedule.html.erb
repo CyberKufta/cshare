@@ -1,6 +1,10 @@
 <% if @schedule_items.any? %>
-
-<ol class="schedule">
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Time</th>
+		<th>Location</th>
+	</tr>
 	<%= render partial: 'shared/schedule_item', collection: @schedule_items %>
-</ol>
+</table>
 <% end %>

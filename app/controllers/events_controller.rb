@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -12,6 +13,8 @@ class EventsController < ApplicationController
   def show
     @schedule_items = @event.schedules
     @images = @event.images.all
+
+
   end
 
   # GET /events/new

@@ -1,0 +1,10 @@
+<h3>Uploaded Images</h3>
+<% if @uploaded_images.any?  %>
+
+	
+	<%= render partial: 'images/image', collection: @uploaded_images, as: :image, locals: {show_page: "home"} %>
+
+
+<% else %>
+ No uploaded images yet.
+ <% end %>

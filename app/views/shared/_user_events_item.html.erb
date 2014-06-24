@@ -1,0 +1,9 @@
+<li class="list-group-item">
+	<%= link_to user_events_item.title, event_path(user_events_item) %>
+	<div> <%= user_events_item.start_date.strftime("%B %d %I:%M %p") %> - <%= user_events_item.end_date.strftime("%B %d %I:%M %p") %> </div>
+	<div> <%= user_events_item.location_name %></div>
+	<div> <%= user_events_item.location.address unless user_events_item.location.blank? %></div>
+
+	
+
+</li>

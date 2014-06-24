@@ -1,0 +1,9 @@
+<h3>Attending Events</h3>
+<% if current_user.attending.any?  %>
+
+	<ul class="list-group">
+		<%= render partial: 'shared/user_events_item', collection: current_user.attending %>
+	</ul>
+<% else %>
+ Not attending any events
+ <% end %>

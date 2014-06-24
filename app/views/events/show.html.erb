@@ -1,55 +1,45 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @event.title) %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="row">
+  <div class="col-md-2">
+    <h4>Event's Images</h4>
+    <%= render partial: 'images/image', collection: @images, locals: {show_page: "event"} %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
+  </div>
+  <div class="col-md-7">
+    <div class="center jumbotron">
+      <% if user_signed_in? && current_user.admin? %>
+      <div class="pull-right">
+      <%= link_to 'Edit ', edit_event_path(@event) %> 
+      <%= link_to 'Delete ', @event, method: :delete, data: { confirm: "Are you sure you want this deleted!" } %>       
+    </div>
+    <% end %>
+      <h1><%= @event.title %></h1>
+      <p><%= @event.description %></p>
+      <p><%= @event.start_date.strftime("%B %d %I:%M %p") %> - <%= @event.end_date.strftime("%B %d %I:%M %p") %></p>
+      <p>@<%= @event.location_name %> : <%= @event.location.address %></p>
+      <p> 
+      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.location.latitude},#{@event.location.longitude}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:L%7C#{@event.location.latitude},#{@event.location.longitude}" %> </p>
+      <%= render 'shared/event_stats' %>
+      <%= render partial: 'attend_form', locals: {event_att: @event} if user_signed_in? %>
+    </div>
+  </div>
 
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
-</p>
+  
 
-<p>
-  <strong>Location name:</strong>
-  <%= @event.location_name %>
-</p>
 
-<p>
-  <strong>Created by:</strong>
-  <%= @event.user.nickname %>
-</p>
+    <div class="col-md-3">
+       
 
-<p>
-  <strong>Address:</strong>
-  <%= "#{@event.location.address} at [#{@event.location.latitude} ,#{@event.location.longitude}]" if !@event.location.nil? %>
+    
 
-</p>
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.location.latitude},#{@event.location.longitude}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:L%7C#{@event.location.latitude},#{@event.location.longitude}" %>
-  <%= render 'shared/event_stats' %>
-</section>
-<div>
-  <%= render 'attend_form' if user_signed_in? %>
+    <br />
+    <h3>Schedule</h3>
+
+    <%= render 'shared/schedule' %>
+    <%= link_to 'Add a new schedule item', new_event_schedule_path(@event), class: "btn btn-default btn-sl" if user_signed_in? && current_user.admin?  %>
+
+
+    </div>
 </div>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-
-<br />
-<h3>Schedule</h3>
-
-<%= render 'shared/schedule' %>
-<%= link_to 'Add a new schedule item', new_event_schedule_path(@event), class: "btn" %>
-<h4>Events Images</h4>
-<%= render @images %>
-

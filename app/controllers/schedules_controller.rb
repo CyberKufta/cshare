@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
 	before_action :set_event
 	before_action :correct_event, only: [:destroy]
+	before_action :authenticate_user!
 
 
 	def new
