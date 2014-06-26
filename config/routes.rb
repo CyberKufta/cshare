@@ -3,9 +3,12 @@ Cshare::Application.routes.draw do
     resources :schedules , only: [:create, :new, :destroy]
   end
 
+
+
   resources :attendances, only: [:create, :destroy]
   resources :images, only: [:create, :destroy]
   get "users_controller/show"
+  get 'tags/:tag', to: 'images#index', as: :tag
   devise_for :users
   match 'users/:id', to: 'users#show', via: 'get', as: :profile
 

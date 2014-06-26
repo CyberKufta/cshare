@@ -8,6 +8,8 @@ gem 'devise'
 
 gem 'geocoder'
 
+gem 'acts-as-taggable-on'
+
 gem 'dragonfly', "~>1.0.5"
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'sprockets', '2.11.0'

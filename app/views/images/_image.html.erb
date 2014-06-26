@@ -19,10 +19,17 @@
 <% else %>
 <div class="media">
 	<div class="pull-left">
-		<%= image_tag(image.image.thumb('100x100').url, class: "media-object") if image.image_stored? %>
+		<% if show_page == "index" %>
+			<%= image_tag(image.image.thumb('300x300').url, class: "media-object") if image.image_stored? %>
+		<% else %>
+				<%= image_tag(image.image.thumb('100x100').url, class: "media-object") if image.image_stored? %>
+		<% end %>
 		</div>
 		<div class="media-body">
 			Uploaded <%= time_ago_in_words(image.created_at) unless image.created_at.blank? %> ago <%= "at #{image.event.title}" unless image.event.blank? %>
+			<% image.tag_list.each do |t| %>
+			<%=  link_to "##{t}", tag_path(t)  %>
+			<% end %>
 	</div>
 </div>
 
