@@ -4,6 +4,9 @@
 		<%= image_tag image.image.thumb('150x150#').url if image.image_stored? %> 
 	</div>
 	<div class="media-body">
+		<div id= "vote_form-<%= image.id %>">
+			<%= render partial: 'votes/vote_form', locals: {vote_item: image} %>
+			</div>
 		Uploaded <%= time_ago_in_words(image.created_at) unless image.created_at.blank? %> ago <%= "by #{image.user.nickname}" %>
 		
 		<% if user_signed_in? && current_user.id == image.user_id %>

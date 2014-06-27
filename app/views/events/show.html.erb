@@ -18,9 +18,9 @@
       <h1><%= @event.title %></h1>
       <p><%= @event.description %></p>
       <p><%= @event.start_date.strftime("%B %d %I:%M %p") %> - <%= @event.end_date.strftime("%B %d %I:%M %p") %></p>
-      <p>@<%= @event.location_name %> : <%= @event.location.address %></p>
+      <p>@<%= @event.location_name %> : <%= @event.location.address if @event.location %></p>
       <p> 
-      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.location.latitude},#{@event.location.longitude}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:L%7C#{@event.location.latitude},#{@event.location.longitude}" %> </p>
+      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@event.location.latitude},#{@event.location.longitude}&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:L%7C#{@event.location.latitude},#{@event.location.longitude}" if @event.location %> </p>
       <%= render 'shared/event_stats' %>
       <%= render partial: 'attend_form', locals: {event_att: @event} if user_signed_in? %>
     </div>

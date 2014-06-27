@@ -2,11 +2,14 @@
 	<td> <%= schedule_item.title %></td>
 	<td> <%= schedule_item.start_date.strftime("%B %d %I:%M %p") %> - <%= schedule_item.end_date.strftime("%B %d %I:%M %p") %></td>
 	<td><%= schedule_item.location_name %></td>
-	<% if current_user.admin? %>
-	<td><%= link_to "delete", event_schedule_path(id: schedule_item.id, event_id: schedule_item.event_id), method: :delete, 
+	<% if user_signed_in? %>
+		<% if current_user.admin? %>
+			<td><%= link_to "delete", event_schedule_path(id: schedule_item.id, event_id: schedule_item.event_id), method: :delete, 
 											 data: { confirm: "are you sure?"}, 
 											 title: schedule_item.title, class: 'btn btn-default btn-xs' %></td>
+		<% end %>
 	<% end %>
+
 	
 
 </tr>
