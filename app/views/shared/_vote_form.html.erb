@@ -1,0 +1,11 @@
+<% @item = vote_item
+	@vote = current_user.voted?(@item) %>
+
+<div id= "vote_form-<%= @item.id %>">
+	<% if @vote %>
+		<%= render 'votes/<%=@vote.value%>' %>
+	<% else %>
+		<%= render 'votes/vote'%>
+	<% end %>
+
+</div>

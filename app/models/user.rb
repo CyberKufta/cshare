@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :attendances, foreign_key: "user_id", dependent: :destroy
   has_many :attending, through: :attendances, source: :event
   has_many :images
+  has_many :votes, dependent: :destroy
 
 
 
@@ -33,4 +34,18 @@ class User < ActiveRecord::Base
   def unattend!(event)
   	attendances.find_by(event_id: event.id).destroy
   end
+
+  def voted?(item)
+    votes.find_by(votable_id: item.id, votable_type: item.class.name)
+  end
+
+  def vote!(item, value)
+    votes.create!(votable_id: item.id, votable_type: item.class.name, value: value)
+  end
+
+  def unvote!(item)
+    votes.find_by(votable_id: item.id).destroy
+  end
+
+
 end

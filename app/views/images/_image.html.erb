@@ -17,19 +17,28 @@
 		
 
 <% else %>
+
 <div class="media">
+
 	<div class="pull-left">
 		<% if show_page == "index" %>
+		
+
 			<%= image_tag(image.image.thumb('300x300').url, class: "media-object") if image.image_stored? %>
 		<% else %>
+
 				<%= image_tag(image.image.thumb('100x100').url, class: "media-object") if image.image_stored? %>
 		<% end %>
 		</div>
 		<div class="media-body">
+			<div id= "vote_form-<%= image.id %>">
+			<%= render partial: 'votes/vote_form', locals: {vote_item: image} %>
+			</div>
 			Uploaded <%= time_ago_in_words(image.created_at) unless image.created_at.blank? %> ago <%= "at #{image.event.title}" unless image.event.blank? %>
 			<% image.tag_list.each do |t| %>
 			<%=  link_to "##{t}", tag_path(t)  %>
 			<% end %>
+
 	</div>
 </div>
 

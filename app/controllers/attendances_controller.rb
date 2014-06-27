@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-	before_action :user_signed_in?
+	before_action :authenticate_user!
 
 	def create
 		@event = Event.find(params[:attendance][:event_id])

@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
   dragonfly_accessor :image
   belongs_to :user
   belongs_to :event
+  has_many :votes, as: :votable
   acts_as_ordered_taggable
   after_validation :set_tags
 

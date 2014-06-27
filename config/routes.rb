@@ -6,6 +6,7 @@ Cshare::Application.routes.draw do
 
 
   resources :attendances, only: [:create, :destroy]
+  resources :votes, only: [:create, :destroy]
   resources :images, only: [:create, :destroy]
   get "users_controller/show"
   get 'tags/:tag', to: 'images#index', as: :tag

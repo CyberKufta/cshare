@@ -1,0 +1,12 @@
+
+	<% vote_type = current_user.voted?(vote_item).value.to_s if current_user.voted?(vote_item)  %>
+	<%= form_for(current_user.votes.build(value: true, votable_id: vote_item.id, votable_type: vote_item.class.name), remote: true) do |f| %>
+		<div><%= f.hidden_field :votable_id %><%= f.hidden_field :value %><%= f.hidden_field :votable_type %> </div>
+		<%= f.submit "U", id: "up", class: vote_type == "true" ? 'btn btn-xs btn-warning' : 'btn btn-xs'%>
+	<% end %>
+	<%= vote_item.votes.count(conditions: { value: true })  - vote_item.votes.count(conditions: { value: false })%>
+	<%= form_for(current_user.votes.build(value: false, votable_id: vote_item.id, votable_type: vote_item.class.name), remote: true ) do |f| %>
+		<div><%= f.hidden_field :votable_id %><%= f.hidden_field :value %><%= f.hidden_field :votable_type %> </div>
+		<%= f.submit "D", class: vote_type == "false" ? 'btn btn-xs btn-warning' : 'btn btn-xs' %>
+	<% end %>
+	
