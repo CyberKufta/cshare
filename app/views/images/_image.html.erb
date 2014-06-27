@@ -8,7 +8,9 @@
 			<%= render partial: 'votes/vote_form', locals: {vote_item: image} %>
 			</div>
 		Uploaded <%= time_ago_in_words(image.created_at) unless image.created_at.blank? %> ago <%= "by #{image.user.nickname}" %>
-		
+		<% image.tag_list.each do |t| %>
+			<%=  link_to "##{t}", tag_path(t)  %>
+			<% end %>
 		<% if user_signed_in? && current_user.id == image.user_id %>
 		<%= link_to "delete", image, method: :delete,
 									 data: { confirm: "are you sure?"},
