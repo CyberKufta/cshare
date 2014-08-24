@@ -24,9 +24,15 @@
       <%= render 'shared/event_stats' %>
       <%= render partial: 'attend_form', locals: {event_att: @event} if user_signed_in? %>
     </div>
+
+    <h4> Comments </h4>
+    <% unless @comments.empty? %>
+    <%= nested_comments(@comments) %>
+    <% end %>
+    <%= render 'comments/form'%>
   </div>
 
-  
+
 
 
     <div class="col-md-3">

@@ -1,6 +1,7 @@
 Cshare::Application.routes.draw do
   resources :events do
     resources :schedules , only: [:create, :new, :destroy]
+    resources :comments, only: [:create, :new, :destroy]
   end
 
 

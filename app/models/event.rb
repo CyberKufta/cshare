@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   has_many :attenders, through: :attendances, source: :user
   has_many :images
   has_many :votes, as: :votable
+  has_many :comments, as: :commentable
   has_one :location, dependent: :destroy
   accepts_nested_attributes_for :location
 

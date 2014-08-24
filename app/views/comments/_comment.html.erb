@@ -1,0 +1,6 @@
+<ul>
+	<%= " #{comment.created_at.strftime('%b %d, %Y at %H:%M')} #{comment.user.nickname} said:" %> 
+	<%= simple_format(comment.content) %>
+	<div class="actions"> <%= link_to "Reply", new_polymorphic_path([@commentable, Comment.new], parent_id: comment ) %></div>
+	<li><%= nested_comments(comment.children) %></li>
+</ul>

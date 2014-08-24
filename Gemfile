@@ -6,6 +6,8 @@ gem 'rails', '4.0.5'
 
 gem 'devise'
 
+gem 'ancestry'
+
 gem 'geocoder'
 
 gem 'acts-as-taggable-on'

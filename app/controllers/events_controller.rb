@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include Share::Commentable
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
